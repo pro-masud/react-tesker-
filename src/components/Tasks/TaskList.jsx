@@ -26,8 +26,11 @@ const TaskList = ({ tasks }) => {
             </tr>
           </thead>
           <tbody>
-            {tasks.map((task) => (
-              <tr className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2">
+            {tasks.map((task, index) => (
+              <tr
+                key={index}
+                className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2"
+              >
                 <td>
                   {task.isFibarate ? (
                     <FaRegStar color="yellow" />
@@ -42,7 +45,7 @@ const TaskList = ({ tasks }) => {
                 <td>
                   <ul className="flex justify-center gap-1.5 flex-wrap">
                     {task.tags.map((tag) => (
-                      <li>
+                      <li key={tag}>
                         <span className="inline-block h-5 whitespace-nowrap rounded-[45px] bg-[#00D991A1] px-2.5 text-sm capitalize text-[#F4F5F6]">
                           {tag}
                         </span>
