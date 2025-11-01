@@ -53,7 +53,7 @@ const TaskList = ({ tasks }) => {
                     ))}
                   </ul>
                 </td>
-                <td className="text-center">High</td>
+                <td className="text-center">{task.priority}</td>
                 <td>
                   <div className="flex items-center justify-center space-x-3">
                     <button className="text-red-500">Delete</button>

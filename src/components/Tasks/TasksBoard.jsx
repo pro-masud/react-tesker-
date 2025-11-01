@@ -17,10 +17,16 @@ const TasksBoard = () => {
   const [showAddModel, setShowAddModel] = useState(false);
   const [tasks, setTask] = useState([defaultTasks]);
 
+  const handlSingleTask = (task) => {
+    console.log("this is a task", task);
+  };
+
   return (
     <>
       <section className="mb-20" id="tasks">
-        {showAddModel && <AddTaskModel closeModel={setShowAddModel} />}
+        {showAddModel && (
+          <AddTaskModel closeModel={setShowAddModel} onSave={handlSingleTask} />
+        )}
         <div className="container mx-auto">
           <div className="p-2 flex justify-end">
             <SearchTask />
