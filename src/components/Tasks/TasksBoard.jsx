@@ -17,14 +17,10 @@ const TasksBoard = () => {
   const [showAddModel, setShowAddModel] = useState(false);
   const [tasks, setTask] = useState([defaultTasks]);
 
-  const handlClickModul = () => {
-    console.log("clicked");
-  };
-
   return (
     <>
       <section className="mb-20" id="tasks">
-        {showAddModel && <AddTaskModel />}
+        {showAddModel && <AddTaskModel closeModel={setShowAddModel} />}
         <div className="container mx-auto">
           <div className="p-2 flex justify-end">
             <SearchTask />
