@@ -10,7 +10,7 @@ const TasksBoard = () => {
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, asperiores?",
     tags: ["react", "node", "php"],
     priority: "High",
-    isFibarate: false,
+    isFibarate: true,
   };
 
   const [tasks, setTask] = useState([defaultTasks]);
