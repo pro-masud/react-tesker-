@@ -3,8 +3,8 @@ import HeroImage from "./../../assets/image/frame.png";
 const Hero = () => {
   return (
     <>
-      <section className="pb-[114px] pt-20 md:mt-[100px]">
-        <div className="container lg:px-20">
+      <section className="pb-[114px] pt-20 md:mt-[100px] ">
+        <div className="container lg:px-20 mx-auto">
           <div className="grid items-center gap-6 md:grid-cols-2">
             <div className="flex justify-center md:order-2">
               <img
