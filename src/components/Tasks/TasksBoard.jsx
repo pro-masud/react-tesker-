@@ -17,6 +17,7 @@ const TasksBoard = () => {
 
   const [showAddModel, setShowAddModel] = useState(false);
   const [tasks, setTask] = useState([defaultTasks]);
+  const [taskToUpdate, setTaskToUpdate] = useState(null);
 
   const handlSingleTask = (addNewTask) => {
     console.log("this is a task", addNewTask);
@@ -26,14 +27,19 @@ const TasksBoard = () => {
 
   // Edite Task
   const handlEditTask = (editeTask) => {
-    console.log(editeTask);
+    setTaskToUpdate(editeTask);
+    setShowAddModel(true);
   };
 
   return (
     <>
       <section className="mb-20" id="tasks">
         {showAddModel && (
-          <AddTaskModel closeModel={setShowAddModel} onSave={handlSingleTask} />
+          <AddTaskModel
+            closeModel={setShowAddModel}
+            onSave={handlSingleTask}
+            editeTask={taskToUpdate}
+          />
         )}
         <div className="container mx-auto">
           <div className="p-2 flex justify-end">

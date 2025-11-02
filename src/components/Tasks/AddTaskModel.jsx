@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 
-const AddTaskModel = ({ closeModel, onSave }) => {
-  const [task, setTask] = useState({
-    id: crypto.randomUUID(),
-    title: "",
-    description: "",
-    tags: [],
-    priority: "",
-    isFibarate: false,
-  });
+const AddTaskModel = ({ closeModel, onSave, editeTask }) => {
+  const [task, setTask] = useState(
+    editeTask || {
+      id: crypto.randomUUID(),
+      title: "",
+      description: "",
+      tags: [],
+      priority: "",
+      isFibarate: false,
+    }
+  );
 
   const handlClickInput = (e) => {
     const name = e.target.name;
