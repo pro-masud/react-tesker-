@@ -20,7 +20,6 @@ const TasksBoard = () => {
   const [taskToUpdate, setTaskToUpdate] = useState(null);
 
   const handlSingleTask = (addNewTask, addTask) => {
-    console.log(addTask);
     if (addTask) {
       setTask([...tasks, addNewTask]);
     } else {
@@ -50,13 +49,17 @@ const TasksBoard = () => {
 
   // Task Delete
   const handlDeleteTask = (deleteTaskID) => {
-    console.log(deleteTaskID);
-
     const updateTask = tasks.filter(
       (singleTask) => singleTask.id !== deleteTaskID
     );
 
     setTask(updateTask);
+  };
+
+  // delete all task here
+  const handlDeleteAllTask = () => {
+    tasks.length = 0;
+    setTask([...tasks]);
   };
 
   return (
@@ -74,7 +77,10 @@ const TasksBoard = () => {
             <SearchTask />
           </div>
           <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
-            <ActionTask AddModul={() => setShowAddModel(true)} />
+            <ActionTask
+              AddModul={() => setShowAddModel(true)}
+              deleteAllTask={handlDeleteAllTask}
+            />
             <TaskList
               tasks={tasks}
               onEdite={handlEditTask}
