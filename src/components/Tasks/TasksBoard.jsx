@@ -3,6 +3,7 @@ import ActionTask from "./ActionTask";
 import AddTaskModel from "./AddTaskModel";
 import SearchTask from "./SearchTask";
 import TaskList from "./TaskList";
+import NoTask from "./noTask";
 
 const TasksBoard = () => {
   const defaultTasks = {
@@ -99,12 +100,16 @@ const TasksBoard = () => {
               AddModul={() => setShowAddModel(true)}
               deleteAllTask={handlDeleteAllTask}
             />
-            <TaskList
-              tasks={tasks}
-              onEdite={handlEditTask}
-              onDelete={handlDeleteTask}
-              addFav={handlAddFibarate}
-            />
+            {tasks.length > 0 ? (
+              <TaskList
+                tasks={tasks}
+                onEdite={handlEditTask}
+                onDelete={handlDeleteTask}
+                addFav={handlAddFibarate}
+              />
+            ) : (
+              <NoTask />
+            )}
           </div>
         </div>
       </section>
