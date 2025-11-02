@@ -71,6 +71,15 @@ const TasksBoard = () => {
     setTask(newTasks);
   };
 
+  // Search Task
+  const handlSearchTitle = (searchTitle) => {
+    const filteredTasks = tasks.filter((task) =>
+      task.title.toLowerCase().includes(searchTitle.toLowerCase())
+    );
+
+    setTask([...filteredTasks]);
+  };
+
   return (
     <>
       <section className="mb-20" id="tasks">
@@ -83,7 +92,7 @@ const TasksBoard = () => {
         )}
         <div className="container mx-auto">
           <div className="p-2 flex justify-end">
-            <SearchTask />
+            <SearchTask onSearch={handlSearchTitle} />
           </div>
           <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
             <ActionTask
