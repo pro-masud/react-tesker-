@@ -62,6 +62,15 @@ const TasksBoard = () => {
     setTask([...tasks]);
   };
 
+  // Fibarate toggler function
+  const handlAddFibarate = (taskId) => {
+    const tasksID = tasks.findIndex((task) => task.id === taskId);
+
+    const newTasks = [...tasks];
+    newTasks[tasksID].isFibarate = !newTasks[tasksID].isFibarate;
+    setTask(newTasks);
+  };
+
   return (
     <>
       <section className="mb-20" id="tasks">
@@ -85,6 +94,7 @@ const TasksBoard = () => {
               tasks={tasks}
               onEdite={handlEditTask}
               onDelete={handlDeleteTask}
+              addFav={handlAddFibarate}
             />
           </div>
         </div>

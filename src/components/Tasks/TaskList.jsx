@@ -1,6 +1,6 @@
 import { FaRegStar } from "react-icons/fa6";
 
-const TaskList = ({ tasks, onEdite, onDelete }) => {
+const TaskList = ({ tasks, onEdite, onDelete, addFav }) => {
   return (
     <>
       <div className="overflow-auto">
@@ -32,11 +32,13 @@ const TaskList = ({ tasks, onEdite, onDelete }) => {
                 className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2"
               >
                 <td>
-                  {task.isFibarate ? (
-                    <FaRegStar color="yellow" />
-                  ) : (
-                    <FaRegStar color="gray" />
-                  )}
+                  <button onClick={() => addFav(task.id)}>
+                    {task.isFibarate ? (
+                      <FaRegStar color="yellow" />
+                    ) : (
+                      <FaRegStar color="gray" />
+                    )}
+                  </button>
                 </td>
                 <td>{task.title}</td>
                 <td>
