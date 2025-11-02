@@ -13,6 +13,8 @@ const AddTaskModel = ({ closeModel, onSave, editeTask }) => {
     }
   );
 
+  const [addTask, setAddTask] = useState(Object.is(editeTask, null));
+
   const handlClickInput = (e) => {
     const name = e.target.name;
     let value = e.target.value;
@@ -35,12 +37,9 @@ const AddTaskModel = ({ closeModel, onSave, editeTask }) => {
         onSubmit={studentSubmit}
       >
         <h2 className="mb-9 text-center text-2xl font-bold text-white lg:mb-11 lg:text-[28px]">
-          Add New Task
+          {addTask ? "Add New Task" : "Edite Task"}
         </h2>
-        <button
-          className="absolute right-0 top-0"
-          onClick={() => closeModel(false)}
-        >
+        <button className="absolute right-0 top-0" onClick={closeModel}>
           <IoCloseSharp />
         </button>
         <div className="space-y-9 text-white lg:space-y-10">
@@ -103,7 +102,7 @@ const AddTaskModel = ({ closeModel, onSave, editeTask }) => {
           <button
             type="submit"
             className="rounded bg-blue-600 px-4 py-2 text-white transition-all hover:opacity-80"
-            onClick={() => onSave(task)}
+            onClick={() => onSave(task, addTask)}
           >
             Save
           </button>

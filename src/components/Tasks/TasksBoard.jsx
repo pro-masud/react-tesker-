@@ -19,10 +19,22 @@ const TasksBoard = () => {
   const [tasks, setTask] = useState([defaultTasks]);
   const [taskToUpdate, setTaskToUpdate] = useState(null);
 
-  const handlSingleTask = (addNewTask) => {
-    console.log("this is a task", addNewTask);
-    setTask([...tasks, addNewTask]);
+  const handlSingleTask = (addNewTask, addTask) => {
+    console.log(addTask);
+    if (addTask) {
+      setTask([...tasks, addNewTask]);
+    } else {
+      setTask(
+        tasks.map((task) => {
+          if (task.id === addNewTask.id) {
+            return addNewTask;
+          }
+          return task;
+        })
+      );
+    }
     setShowAddModel(false);
+    setTaskToUpdate(null);
   };
 
   // Edite Task
@@ -31,12 +43,17 @@ const TasksBoard = () => {
     setShowAddModel(true);
   };
 
+  const handlCloseModul = () => {
+    setShowAddModel(false);
+    setTaskToUpdate(null);
+  };
+
   return (
     <>
       <section className="mb-20" id="tasks">
         {showAddModel && (
           <AddTaskModel
-            closeModel={setShowAddModel}
+            closeModel={handlCloseModul}
             onSave={handlSingleTask}
             editeTask={taskToUpdate}
           />
