@@ -1,6 +1,6 @@
 import { FaRegStar } from "react-icons/fa6";
 
-const TaskList = ({ tasks }) => {
+const TaskList = ({ tasks, onEdite }) => {
   return (
     <>
       <div className="overflow-auto">
@@ -57,7 +57,12 @@ const TaskList = ({ tasks }) => {
                 <td>
                   <div className="flex items-center justify-center space-x-3">
                     <button className="text-red-500">Delete</button>
-                    <button className="text-blue-500">Edit</button>
+                    <button
+                      className="text-blue-500"
+                      onClick={() => onEdite(task)}
+                    >
+                      Edit
+                    </button>
                   </div>
                 </td>
               </tr>

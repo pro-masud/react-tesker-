@@ -24,6 +24,11 @@ const TasksBoard = () => {
     setShowAddModel(false);
   };
 
+  // Edite Task
+  const handlEditTask = (editeTask) => {
+    console.log(editeTask);
+  };
+
   return (
     <>
       <section className="mb-20" id="tasks">
@@ -36,7 +41,7 @@ const TasksBoard = () => {
           </div>
           <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
             <ActionTask AddModul={() => setShowAddModel(true)} />
-            <TaskList tasks={tasks} />
+            <TaskList tasks={tasks} onEdite={handlEditTask} />
           </div>
         </div>
       </section>
