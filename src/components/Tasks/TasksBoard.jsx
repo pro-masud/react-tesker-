@@ -6,6 +6,7 @@ import TaskList from "./TaskList";
 
 const TasksBoard = () => {
   const defaultTasks = {
+    id: crypto.randomUUID(),
     title: "react learing",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, asperiores?",
@@ -17,8 +18,10 @@ const TasksBoard = () => {
   const [showAddModel, setShowAddModel] = useState(false);
   const [tasks, setTask] = useState([defaultTasks]);
 
-  const handlSingleTask = (task) => {
-    console.log("this is a task", task);
+  const handlSingleTask = (addNewTask) => {
+    console.log("this is a task", addNewTask);
+    setTask([...tasks, addNewTask]);
+    setShowAddModel(false);
   };
 
   return (
