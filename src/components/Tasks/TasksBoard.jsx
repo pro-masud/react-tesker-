@@ -48,6 +48,17 @@ const TasksBoard = () => {
     setTaskToUpdate(null);
   };
 
+  // Task Delete
+  const handlDeleteTask = (deleteTaskID) => {
+    console.log(deleteTaskID);
+
+    const updateTask = tasks.filter(
+      (singleTask) => singleTask.id !== deleteTaskID
+    );
+
+    setTask(updateTask);
+  };
+
   return (
     <>
       <section className="mb-20" id="tasks">
@@ -64,7 +75,11 @@ const TasksBoard = () => {
           </div>
           <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
             <ActionTask AddModul={() => setShowAddModel(true)} />
-            <TaskList tasks={tasks} onEdite={handlEditTask} />
+            <TaskList
+              tasks={tasks}
+              onEdite={handlEditTask}
+              onDelete={handlDeleteTask}
+            />
           </div>
         </div>
       </section>
